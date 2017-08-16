@@ -5,10 +5,6 @@
 
     <view-state id="main">
 
-        <!--<on-render>-->
-            <!--<evaluate expression="bookDAOImpl.books"/>-->
-        <!--</on-render>-->
-
     </view-state>
 
 </flow>

@@ -61,7 +61,7 @@
         <property name="jndiName" value="jdbc/Library"></property>
     </bean>
 
-    <bean id="BookDAOImpl" class="spring.dao.impl.BookDAOImpl"/>
+
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
