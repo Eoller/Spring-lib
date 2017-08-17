@@ -17,54 +17,70 @@
     <ui:define name="content">
 
 
-        <h:form id="booksForm" >
+        <h:form id="booksForm">
 
 
-                <p:dataGrid rowIndexVar="rowIndex" columns="2" lazy="true" var="b" value="${libraryFacade.books}"  id="booksList" styleClass="books_list"  paginator="true" rows="4" paginatorPosition="bottom"
-                        rowsPerPageTemplate="4,10,20" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}"  paginatorAlwaysVisible="true" emptyMessage="">
+            <p:dataGrid rowIndexVar="rowIndex" columns="2" lazy="true" var="b" value="${libraryFacade.books}"
+                        id="booksList" styleClass="books_list" paginator="true" rows="4" paginatorPosition="bottom"
+                        rowsPerPageTemplate="4,10,20" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}"
+                        paginatorAlwaysVisible="true" emptyMessage="">
 
 
                 <div class="item">
 
                     <div class="image-info">
 
-                        <h:outputLink styleClass="content_link" target="_blank">
-                            <p:graphicImage width="110" height="150"/>
+                        <h:outputLink styleClass="content_link" value="#{request.contextPath}/PdfContent"  target="_blank">
+                            <p:graphicImage value="/ShowImage?index=#{rowIndex}" width="110" height="150"/>
+                            <f:param name="id" value="#{b.id}"/>
                         </h:outputLink>
 
-                        <p:panelGrid id="ratingPanel" columns="2" >
 
-                            <p:rating id="rating" value="#{b.rating}" styleClass="rating" cancel="false" stars="5" />
-                            <p:outputLabel id="voteCount" value="(#{b.voteCount})" styleClass="vote-count" />
+                        <p:panelGrid id="ratingPanel" columns="2">
+
+                            <p:rating id="rating" value="#{b.rating}" styleClass="rating" cancel="false" stars="5"/>
+                            <p:outputLabel id="voteCount" value="(#{b.voteCount})" styleClass="vote-count"/>
 
                         </p:panelGrid>
 
                     </div>
 
 
-
                     <div class="info">
                         <div class="book_name">
-                            <h:outputLink id="bookName" styleClass="title" target="_blank">
+                            <h:outputLink id="bookName" styleClass="title" value="#{request.contextPath}/PdfContent" target="_blank">
                                 #{b.name}
+                                <f:param name="id" value="#{b.id}"/>
+                                <f:param name="save" value="false"/>
                             </h:outputLink>
 
                         </div>
                         <span>#{b.author}</span>
+
                         <p><strong>#{msg.page_count}:</strong> #{b.pageCount}</p>
+
                         <p><strong>#{msg.publisher}</strong> #{b.publisher}</p>
+
                         <p><strong>#{msg.publish_year}</strong> #{b.publishYear} г.</p>
+
                         <p><strong>#{msg.isbn}</strong> #{b.isbn}</p>
 
                     </div>
 
 
-                    <h:outputLink styleClass="mr" target="_blank">
+                    <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
                         <p class="read">#{msg.read}</p>
+                        <f:param name="id" value="#{b.id}"/>
+                        <f:param name="save" value="false"/>
                     </h:outputLink>
 
-                    <h:outputLink styleClass="mr" target="_blank">
+                    <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
+
                         <p class="download">#{msg.download}</p>
+                        <f:param name="id" value="#{b.id}"/>
+                        <f:param name="filename" value="#{b.name}"/>
+                        <f:param name="save" value="true"/>
+
                     </h:outputLink>
 
                     <p:commandLink styleClass="mr" title="#{msg.edit_book}">
@@ -79,24 +95,25 @@
                 </div>
 
 
-
-
             </p:dataGrid>
 
 
         </h:form>
 
 
-
     </ui:define>
 
+
     <ui:define name="books_count">
+
         <div class="box-sh">
 
-            <h1><p:outputLabel id="booksCount" value="#{msg.book_count}: #{libraryFacade.books.size()}"/></h1>
+            <h1><p:outputLabel id="booksCount" value="#{msg.book_count}:  #{libraryFacade.books.size()}" /></h1>
+
+
 
             <h:form id="add-action">
-                <p:commandLink>
+                <p:commandLink >
                     <h:outputText value="#{msg.add_book}" title="#{msg.add_book}"/>
                 </p:commandLink>
             </h:form>
@@ -104,9 +121,7 @@
 
         </div>
 
-
     </ui:define>
-
 
 
 

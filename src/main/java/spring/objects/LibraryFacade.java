@@ -12,11 +12,10 @@ import java.util.List;
 @Component
 public class LibraryFacade {
 
-
+    private static final String FIELD_CONTENT = "content";
     private BookDAO bookDAO;
     @Autowired
     private SearchCriteria searchCriteria;
-
     private List<Book> books;
 
     @Autowired
@@ -47,7 +46,10 @@ public class LibraryFacade {
                 books = bookDAO.getBooks(new Author(searchCriteria.getText()));
                 break;
         }
-
-
     }
+
+    public byte[] getContent(long id){
+        return (byte[])bookDAO.getFieldValue(id, FIELD_CONTENT);
+    }
+
 }

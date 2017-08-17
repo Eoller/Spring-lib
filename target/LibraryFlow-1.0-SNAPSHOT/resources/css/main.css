@@ -334,3 +334,57 @@ body {
     font-size: 30px;
     color:#aeaeae;
 }
+
+.noborder-button{
+    text-decoration: none;
+    color: #888;
+    display: block;
+    border: 0px none;
+    font-family: Arial,sans-serif;
+    font-size: 1.1em;
+    background: none repeat scroll 0% 0% transparent;
+    text-align: center;
+    list-style: outside none none;
+    width: 25.5px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.noborder-button  span{
+    padding:0 !important;
+    font-weight: normal !important;
+}
+
+.noborder-button button:hover {background: #ceeefb;}
+
+
+.noborder-button-genre{
+    color: #888;
+    display: block;
+    border: 0px none;
+    font-family: Arial,sans-serif;
+    font-size: 1.1em;
+    background: none repeat scroll 0% 0% transparent;
+    text-align: center;
+    list-style: outside none none;
+    width: 100%;
+    padding-left: 10px;
+    cursor: pointer;
+    box-shadow: none;
+    margin-top: 5px;
+    display: block;
+    color: #7F7F7F;
+    height: 35px;
+    font-weight: normal;
+    text-decoration: underline !important;
+    margin-bottom: 5px;
+}
+
+.noborder-button-genre span{
+    margin-bottom: 5px;
+}
+
+.left-menu li:hover{
+    background-color: #ceeefb;
+}
