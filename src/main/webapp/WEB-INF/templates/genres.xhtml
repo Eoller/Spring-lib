@@ -5,24 +5,24 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
 
-    <h:body>
-        <ui:composition>
-            <div class="left-menu">
-                <h:form styleClass="genres" id="genresForm">
-                    <ul>
-                        <ui:repeat value="${genreDAOImpl.genres}" var="g">
-                            <li>
-                                <p:commandLink value="${g.name}"/>
-                            </li>
-                        </ui:repeat>
-                    </ul>
-                </h:form>
-            </div>
-        </ui:composition>
-    </h:body>
+<h:body>
+    <ui:composition>
+        <div class="left-menu">
+            <h:form styleClass="genres" id="genresForm">
+                <ul>
+                    <ui:repeat value="${genreDAOImpl.genres}" var="g">
+                        <li>
+                            <p:commandLink value="${g.name}" action="searchByGenre" actionListener="#{searchCriteria.setGenre(g)}" ajax="false"/>
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </h:form>
+        </div>
+    </ui:composition>
+</h:body>
 </html>
 

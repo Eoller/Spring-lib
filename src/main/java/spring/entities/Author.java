@@ -10,6 +10,14 @@ public class Author {
     private String fio;
     private Date birthday;
 
+    public Author(){
+
+    }
+
+    public Author(String fio){
+        this.fio=fio;
+    }
+
     public long getId() {
         return id;
     }

@@ -4,6 +4,7 @@ package spring.objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spring.dao.interfaces.BookDAO;
+import spring.entities.Author;
 import spring.entities.Book;
 
 import java.util.List;
@@ -13,6 +14,10 @@ public class LibraryFacade {
 
 
     private BookDAO bookDAO;
+    @Autowired
+    private SearchCriteria searchCriteria;
+
+    private List<Book> books;
 
     @Autowired
     public void setBookDAO(BookDAO bookDAO) {
@@ -20,10 +25,29 @@ public class LibraryFacade {
         books = bookDAO.getBooks();
     }
 
-    private List<Book> books;
-
-
     public List<Book> getBooks() {
         return books;
+    }
+
+    public void searchBooksByLetter() {
+        books = bookDAO.getBooks(searchCriteria.getLetter());
+    }
+
+    public void searchBooksByGenre() {
+        books = bookDAO.getBooks(searchCriteria.getGenre());
+    }
+
+    public void searchBooksByText() {
+
+        switch (searchCriteria.getSearchType()) {
+            case TITLE:
+                books = bookDAO.getBooks(searchCriteria.getText());
+                break;
+            case AUTHOR:
+                books = bookDAO.getBooks(new Author(searchCriteria.getText()));
+                break;
+        }
+
+
     }
 }
